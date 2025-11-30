@@ -1,0 +1,5 @@
+*.ini
+*.csv
+*.txt
+*.xlsx
+*.env
