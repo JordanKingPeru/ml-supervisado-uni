@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control N° 2: Árboles de Decisión y Métodos Ensemble</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3, h4 { color: #2c3e50; }
+        h1 { border-bottom: 3px solid #27ae60; padding-bottom: 10px; }
+        h2 { border-bottom: 1px solid #bdc3c7; padding-bottom: 5px; margin-top: 30px; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #27ae60; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        pre { background-color: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        pre code { background-color: transparent; color: inherit; }
+        .highlight { background-color: #fff3cd; padding: 10px; border-left: 4px solid #ffc107; margin: 15px 0; }
+        .error { background-color: #f8d7da; padding: 10px; border-left: 4px solid #dc3545; margin: 15px 0; }
+        .success { background-color: #d4edda; padding: 10px; border-left: 4px solid #28a745; margin: 15px 0; }
+        .info { background-color: #d1ecf1; padding: 10px; border-left: 4px solid #17a2b8; margin: 15px 0; }
+        .bonus { background-color: #e2d5f1; padding: 10px; border-left: 4px solid #9b59b6; margin: 15px 0; }
+        a { color: #27ae60; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul, ol { padding-left: 25px; }
+        li { margin: 5px 0; }
+        hr { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+        .header-info { background-color: #ecf0f1; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .header-info p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<h1>📝 Control N° 2: Árboles de Decisión y Métodos Ensemble</h1>
+
+<div class="header-info">
+    <p><strong>Curso:</strong> Machine Learning Supervisado - PECD UNI</p>
+    <p><strong>Docente:</strong> Jordan King Rodriguez Mallqui</p>
+    <p><strong>Sesión:</strong> 02 - Árboles de Decisión y Ensembles</p>
+    <p><strong>Fecha de entrega:</strong> 07/12/2025</p>
+    <p><strong>Modalidad:</strong> Individual o en parejas</p>
+</div>
+
+<hr>
+
+<h2>🎯 Objetivo</h2>
+<p>Aplicar y comparar <strong>algoritmos no lineales</strong> (Árboles de Decisión, Random Forest, Gradient Boosting, SVM, KNN) en un problema de clasificación o regresión, demostrando comprensión de sus fortalezas, debilidades y el impacto de sus hiperparámetros.</p>
+
+<hr>
+
+<h2>📋 Instrucciones Generales</h2>
+
+<h3>1. Selección del Dataset</h3>
+<p>Puedes usar el <strong>mismo dataset del Control N° 1</strong> o elegir uno nuevo de las siguientes opciones:</p>
+
+<h4>🔹 Opción A: Datasets Sugeridos (Clasificación)</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Dataset</th>
+            <th>Descripción</th>
+            <th>Enlace</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Telco Churn</strong></td>
+            <td>Predicción de fuga de clientes</td>
+            <td><a href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn" target="_blank">Kaggle</a></td>
+        </tr>
+        <tr>
+            <td><strong>Credit Card Fraud</strong></td>
+            <td>Detección de fraude</td>
+            <td><a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank">Kaggle</a></td>
+        </tr>
+        <tr>
+            <td><strong>Mushroom</strong></td>
+            <td>Clasificación comestible/venenoso</td>
+            <td><a href="https://archive.ics.uci.edu/ml/datasets/mushroom" target="_blank">UCI ML Repository</a></td>
+        </tr>
+        <tr>
+            <td><strong>Breast Cancer</strong></td>
+            <td>Diagnóstico de cáncer</td>
+            <td><a href="https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-dataset" target="_blank">Scikit-Learn</a></td>
+        </tr>
+        <tr>
+            <td><strong>Customer Segmentation</strong></td>
+            <td>Segmentación de clientes</td>
+            <td><a href="https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python" target="_blank">Kaggle</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>🔹 Opción B: Datasets Sugeridos (Regresión)</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Dataset</th>
+            <th>Descripción</th>
+            <th>Enlace</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Boston Housing</strong></td>
+            <td>Precio de viviendas</td>
+            <td><a href="https://www.kaggle.com/datasets/vikrishnan/boston-house-prices" target="_blank">Kaggle</a></td>
+        </tr>
+        <tr>
+            <td><strong>Bike Sharing</strong></td>
+            <td>Demanda de bicicletas</td>
+            <td><a href="https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset" target="_blank">UCI ML Repository</a></td>
+        </tr>
+        <tr>
+            <td><strong>Energy Efficiency</strong></td>
+            <td>Consumo energético de edificios</td>
+            <td><a href="https://archive.ics.uci.edu/ml/datasets/energy+efficiency" target="_blank">UCI ML Repository</a></td>
+        </tr>
+        <tr>
+            <td><strong>Insurance Charges</strong></td>
+            <td>Predicción de costos médicos</td>
+            <td><a href="https://www.kaggle.com/datasets/mirichoi0218/insurance" target="_blank">Kaggle</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>🔹 Opción C: Dataset Propio</h4>
+<p>Requisitos:</p>
+<ul>
+    <li>Disponible en <strong>repositorio público</strong> (Kaggle, UCI, OpenML, GitHub, etc.)</li>
+    <li>Al menos <strong>500 registros</strong> y <strong>5 features</strong></li>
+    <li>Problema de <strong>clasificación</strong> o <strong>regresión</strong></li>
+    <li>Enlace de descarga incluido (notebook replicable)</li>
+</ul>
+
+<hr>
+
+<h2>📦 Entregables</h2>
+
+<h3>Notebook Jupyter con las siguientes secciones:</h3>
+
+<h4>1. Introducción y Contexto (5 pts)</h4>
+<ul>
+    <li>Descripción breve del problema</li>
+    <li>Justificación de por qué un modelo no lineal podría ser útil</li>
+</ul>
+
+<h4>2. Carga y Preprocesamiento (10 pts)</h4>
+<ul>
+    <li>Carga del dataset</li>
+    <li>Pipeline de preprocesamiento (reutilizar lo aprendido en Sesión 1)</li>
+    <li>División train/test correcta</li>
+</ul>
+
+<h4>3. Entrenamiento de Modelos (30 pts)</h4>
+<p>Entrenar al menos <strong>4 de los siguientes modelos</strong>:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Modelo</th>
+            <th>Clase en Scikit-Learn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Árbol de Decisión</td>
+            <td><code>DecisionTreeClassifier</code> / <code>DecisionTreeRegressor</code></td>
+        </tr>
+        <tr>
+            <td>Random Forest</td>
+            <td><code>RandomForestClassifier</code> / <code>RandomForestRegressor</code></td>
+        </tr>
+        <tr>
+            <td>Gradient Boosting</td>
+            <td><code>GradientBoostingClassifier</code> / <code>GradientBoostingRegressor</code></td>
+        </tr>
+        <tr>
+            <td>XGBoost</td>
+            <td><code>XGBClassifier</code> / <code>XGBRegressor</code></td>
+        </tr>
+        <tr>
+            <td>SVM</td>
+            <td><code>SVC</code> / <code>SVR</code></td>
+        </tr>
+        <tr>
+            <td>KNN</td>
+            <td><code>KNeighborsClassifier</code> / <code>KNeighborsRegressor</code></td>
+        </tr>
+    </tbody>
+</table>
+<p>Para cada modelo:</p>
+<ul>
+    <li>Entrenar con hiperparámetros por defecto</li>
+    <li>Documentar brevemente qué hace el algoritmo</li>
+</ul>
+
+<h4>4. Comparación de Modelos (20 pts)</h4>
+<ul>
+    <li>Tabla comparativa con métricas de todos los modelos</li>
+    <li>Gráfico de barras comparando rendimiento</li>
+    <li>Análisis: ¿Cuál modelo tiene mejor desempeño? ¿Por qué?</li>
+</ul>
+
+<h4>5. Ajuste Manual de Hiperparámetros (20 pts)</h4>
+<p>Seleccionar el <strong>mejor modelo</strong> de la comparación y realizar:</p>
+<ul>
+    <li>Probar <strong>manualmente</strong> al menos <strong>3 configuraciones diferentes</strong> de hiperparámetros</li>
+    <li><strong>Justificar</strong> por qué elegiste esos valores (basándote en la teoría vista en clase)</li>
+    <li>Comparar resultados de cada configuración</li>
+    <li>Reportar mejora obtenida (si la hay)</li>
+</ul>
+
+<div class="info">
+    <strong>📝 Nota:</strong> En la siguiente sesión veremos técnicas automáticas como <code>GridSearchCV</code> y <code>RandomizedSearchCV</code>. Por ahora, el objetivo es que entiendas el <strong>efecto de cada hiperparámetro</strong> mediante experimentación manual.
+</div>
+
+<p>Ejemplo de hiperparámetros a explorar:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Modelo</th>
+            <th>Hiperparámetros Sugeridos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Decision Tree</td>
+            <td><code>max_depth</code>, <code>min_samples_split</code>, <code>min_samples_leaf</code></td>
+        </tr>
+        <tr>
+            <td>Random Forest</td>
+            <td><code>n_estimators</code>, <code>max_depth</code>, <code>max_features</code></td>
+        </tr>
+        <tr>
+            <td>Gradient Boosting</td>
+            <td><code>n_estimators</code>, <code>learning_rate</code>, <code>max_depth</code></td>
+        </tr>
+        <tr>
+            <td>SVM</td>
+            <td><code>C</code>, <code>kernel</code>, <code>gamma</code></td>
+        </tr>
+        <tr>
+            <td>KNN</td>
+            <td><code>n_neighbors</code>, <code>weights</code>, <code>metric</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>6. Interpretabilidad (10 pts)</h4>
+<ul>
+    <li>Para modelos basados en árboles: <strong>Feature Importance</strong></li>
+    <li>Visualización del árbol (si aplica, con <code>plot_tree</code> o similar)</li>
+    <li>Interpretación: ¿Qué variables son más importantes para el modelo?</li>
+</ul>
+
+<h4>7. Conclusiones (5 pts)</h4>
+<ul>
+    <li>¿Qué modelo recomiendas para producción y por qué?</li>
+    <li>Trade-offs observados (accuracy vs interpretabilidad, tiempo de entrenamiento, etc.)</li>
+    <li>Próximos pasos sugeridos</li>
+</ul>
+
+<hr>
+
+<h2>⚠️ Criterios de Evaluación</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Criterio</th>
+            <th>Puntos</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Reproducibilidad</strong></td>
+            <td>10</td>
+            <td>Notebook ejecutable de principio a fin</td>
+        </tr>
+        <tr>
+            <td><strong>Pipeline correcto</strong></td>
+            <td>10</td>
+            <td>Preprocesamiento dentro del pipeline, sin data leakage</td>
+        </tr>
+        <tr>
+            <td><strong>Modelos entrenados</strong></td>
+            <td>30</td>
+            <td>Al menos 4 modelos diferentes correctamente implementados</td>
+        </tr>
+        <tr>
+            <td><strong>Comparación justa</strong></td>
+            <td>20</td>
+            <td>Métricas apropiadas, mismo split para todos</td>
+        </tr>
+        <tr>
+            <td><strong>Tuning de hiperparámetros</strong></td>
+            <td>20</td>
+            <td>Experimentación manual con justificación</td>
+        </tr>
+        <tr>
+            <td><strong>Interpretabilidad</strong></td>
+            <td>10</td>
+            <td>Feature importance y/o visualización del árbol</td>
+        </tr>
+        <tr style="background-color: #d4edda; font-weight: bold;">
+            <td><strong>TOTAL</strong></td>
+            <td><strong>100</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h2>🚫 Errores que Penalizan</h2>
+<div class="error">
+    <ul>
+        <li>❌ Comparar modelos con diferentes splits de datos <strong>(-10 pts)</strong></li>
+        <li>❌ No usar <code>random_state</code> en modelos y splits <strong>(-5 pts)</strong></li>
+        <li>❌ No justificar los cambios de hiperparámetros <strong>(-10 pts)</strong></li>
+        <li>❌ Notebook que no ejecuta de principio a fin <strong>(-20 pts)</strong></li>
+        <li>❌ Solo entrenar 2 modelos o menos <strong>(-15 pts)</strong></li>
+        <li>❌ No incluir Feature Importance cuando aplica <strong>(-5 pts)</strong></li>
+    </ul>
+</div>
+
+<hr>
+
+<h2>📤 Formato de Entrega</h2>
+<ol>
+    <li><strong>Archivo:</strong> <code>Control02_Apellido_Nombre.ipynb</code></li>
+    <li><strong>Plataforma:</strong> <a href="https://canvas.instructure.com/courses/12906015" target="_blank">Canvas</a></li>
+</ol>
+
+<h3>Estructura sugerida del notebook:</h3>
+<pre><code>1. Título y datos del alumno
+2. Introducción
+3. Carga y Preprocesamiento
+4. Entrenamiento de Modelos (4+ modelos)
+5. Comparación y Análisis
+6. Ajuste Manual de Hiperparámetros
+7. Interpretabilidad (Feature Importance)
+8. Conclusiones
+9. Referencias</code></pre>
+
+<hr>
+
+<h2>💡 Tips para un Buen Trabajo</h2>
+<div class="success">
+    <ol>
+        <li><strong>Reutiliza tu Pipeline:</strong> El preprocesamiento del Control 1 puede servir aquí</li>
+        <li><strong>Usa <code>cross_val_score</code>:</strong> Para una comparación más robusta</li>
+        <li><strong>Cuidado con el tiempo:</strong> Algunos modelos (SVM, GridSearch extenso) pueden tardar mucho</li>
+        <li><strong>Documenta tus decisiones:</strong> ¿Por qué elegiste esos rangos de hiperparámetros?</li>
+        <li><strong>Visualiza:</strong> Un gráfico vale más que mil números</li>
+    </ol>
+</div>
+
+<h3>Código de Referencia: Comparación Rápida</h3>
+<pre><code>from sklearn.model_selection import cross_val_score
+
+modelos = {
+    'Decision Tree': DecisionTreeClassifier(random_state=42),
+    'Random Forest': RandomForestClassifier(random_state=42),
+    'Gradient Boosting': GradientBoostingClassifier(random_state=42),
+    'KNN': KNeighborsClassifier()
+}
+
+resultados = []
+for nombre, modelo in modelos.items():
+    scores = cross_val_score(modelo, X_train, y_train, cv=5, scoring='accuracy')
+    resultados.append({
+        'Modelo': nombre,
+        'CV Mean': scores.mean(),
+        'CV Std': scores.std()
+    })
+
+pd.DataFrame(resultados).sort_values('CV Mean', ascending=False)</code></pre>
+
+<hr>
+
+<h2>📚 Recursos de Apoyo</h2>
+
+<h3>📂 Repositorio del Curso</h3>
+<p>Todo el material está disponible en:</p>
+<p>🔗 <strong><a href="https://github.com/JordanKingPeru/ml-supervisado-uni" target="_blank">https://github.com/JordanKingPeru/ml-supervisado-uni</a></strong></p>
+
+<h3>📓 Notebooks de la Sesión 2</h3>
+<ul>
+    <li><code>00a_Arboles_Decision_Intro.ipynb</code> - Fundamentos de Árboles de Decisión</li>
+    <li><code>00b_Random_Forest_Intro.ipynb</code> - Random Forest y Bagging</li>
+    <li><code>00c_Gradient_Boosting_Intro.ipynb</code> - Gradient Boosting</li>
+    <li><code>00d_SVM_Intro.ipynb</code> - Support Vector Machines</li>
+    <li><code>00e_KNN_Intro.ipynb</code> - K-Nearest Neighbors</li>
+    <li><code>01_Algoritmos_No_Lineales.ipynb</code> - Comparación de algoritmos</li>
+    <li><code>02_Arena_Combate.ipynb</code> - Competencia de modelos</li>
+</ul>
+
+<h3>🔗 Documentación Oficial</h3>
+<ul>
+    <li><a href="https://scikit-learn.org/stable/modules/tree.html" target="_blank">Decision Trees - Scikit-Learn</a></li>
+    <li><a href="https://scikit-learn.org/stable/modules/ensemble.html#forest" target="_blank">Random Forest - Scikit-Learn</a></li>
+    <li><a href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting" target="_blank">Gradient Boosting - Scikit-Learn</a></li>
+    <li><a href="https://scikit-learn.org/stable/modules/svm.html" target="_blank">SVM - Scikit-Learn</a></li>
+    <li><a href="https://scikit-learn.org/stable/modules/neighbors.html" target="_blank">KNN - Scikit-Learn</a></li>
+    <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html" target="_blank">GridSearchCV - Scikit-Learn</a> <em>(referencia para la siguiente sesión)</em></li>
+</ul>
+
+<h3>📋 Cheatsheet de Hiperparámetros</h3>
+<p>Consulta el archivo <code>recursos/cheatsheets/hyperparameters_cheatsheet.md</code> del repositorio.</p>
+
+<hr>
+
+<h2>❓ Preguntas Frecuentes</h2>
+
+<p><strong>P: ¿Puedo usar el mismo dataset del Control 1?</strong><br>
+R: Sí, de hecho es recomendable para comparar modelos lineales vs no lineales.</p>
+
+<p><strong>P: ¿Es obligatorio usar XGBoost?</strong><br>
+R: No, pero si lo usas ganas puntos extra por exploración (+5 pts bonus).</p>
+
+<p><strong>P: ¿Qué hago si no sé qué valores probar para los hiperparámetros?</strong><br>
+R: Revisa los notebooks de clase y el cheatsheet de hiperparámetros. Empieza con valores pequeños y ve aumentando.</p>
+
+<p><strong>P: ¿Puedo usar LightGBM o CatBoost?</strong><br>
+R: Sí, se consideran como alternativas válidas a Gradient Boosting.</p>
+
+<p><strong>P: ¿Es necesario visualizar todos los árboles?</strong><br>
+R: No, solo visualiza uno representativo (ej: un árbol del Random Forest o el Decision Tree simple).</p>
+
+<hr>
+
+<h2>🏆 Bonus Points (+10 pts máximo)</h2>
+<div class="bonus">
+    <ul>
+        <li><strong>+5 pts:</strong> Usar XGBoost, LightGBM o CatBoost</li>
+        <li><strong>+3 pts:</strong> Incluir curvas de aprendizaje (learning curves)</li>
+        <li><strong>+2 pts:</strong> Análisis de overfitting con diferentes <code>max_depth</code></li>
+    </ul>
+</div>
+
+<hr>
+
+<p style="text-align: center; font-size: 1.5em;">¡Éxitos! 🚀🌳</p>
+
+</body>
+</html>
