@@ -1,0 +1,30 @@
+{
+  "model_type": "LightGBMClassifier",
+  "model_file": "model_lgb.txt",
+  "feature_names": [
+    "SD_MAX_DIAS_MORA_SSFF_06M",
+    "MAX_PORC_DEUDA_SOBREGIRO_CUENTA_CORRIENTE_ENTFIN_12M",
+    "MAX_CNT_ENTIDADES_SSFF_06M",
+    "NumeroTrabajadores",
+    "ANTIGUEDAD_RCC_01M"
+  ],
+  "n_features": 5,
+  "target_col": "target_y",
+  "metrics": {
+    "auc_test": 0.9425,
+    "n_train_samples": 5744,
+    "n_test_samples": 1436
+  },
+  "training_info": {
+    "date": "2025-12-06T02:54:35.175460",
+    "lightgbm_version": "4.6.0",
+    "n_estimators": 100
+  },
+  "feature_importance": {
+    "SD_MAX_DIAS_MORA_SSFF_06M": 676,
+    "MAX_PORC_DEUDA_SOBREGIRO_CUENTA_CORRIENTE_ENTFIN_12M": 715,
+    "MAX_CNT_ENTIDADES_SSFF_06M": 263,
+    "NumeroTrabajadores": 839,
+    "ANTIGUEDAD_RCC_01M": 507
+  }
+}
