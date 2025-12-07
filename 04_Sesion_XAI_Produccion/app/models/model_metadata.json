@@ -16,7 +16,7 @@
     "n_test_samples": 1436
   },
   "training_info": {
-    "date": "2025-12-06T02:54:35.175460",
+    "date": "2025-12-07T12:37:03.790575",
     "lightgbm_version": "4.6.0",
     "n_estimators": 100
   },

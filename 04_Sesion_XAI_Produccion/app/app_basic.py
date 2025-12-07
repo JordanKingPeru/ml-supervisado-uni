@@ -12,11 +12,15 @@ Ejecutar: streamlit run app_basic.py
 import streamlit as st
 import joblib
 import pandas as pd
+from pathlib import Path
 
 # ============================================
 # 1. CONFIGURACIÓN (1 línea)
 # ============================================
 st.set_page_config(page_title="Credit Scoring", page_icon="💳")
+
+# Obtener directorio del script (funciona en Streamlit Cloud)
+SCRIPT_DIR = Path(__file__).parent
 
 # ============================================
 # 2. CARGAR MODELO (con cache para no recargar)
@@ -25,8 +29,9 @@ st.set_page_config(page_title="Credit Scoring", page_icon="💳")
 
 @st.cache_resource
 def cargar_modelo():
-    datos = joblib.load('models/model_joblib.joblib')
-    return datos['model'], datos['feature_names']
+    model_path = SCRIPT_DIR / "models" / "model_joblib.joblib"
+    datos = joblib.load(model_path)
+    return datos["model"], datos["feature_names"]
 
 
 modelo, features = cargar_modelo()
@@ -62,11 +67,11 @@ if st.button("🔮 Calcular Riesgo", type="primary", use_container_width=True):
     input_data = pd.DataFrame([[0] * len(features)], columns=features)
 
     # Asignar las 5 variables del usuario
-    input_data['SD_MAX_DIAS_MORA_SSFF_06M'] = dias_mora
-    input_data['MAX_PORC_DEUDA_SOBREGIRO_CUENTA_CORRIENTE_ENTFIN_12M'] = pct_sobregiro
-    input_data['MAX_CNT_ENTIDADES_SSFF_06M'] = num_entidades
-    input_data['NumeroTrabajadores'] = trabajadores
-    input_data['ANTIGUEDAD_RCC_01M'] = antiguedad
+    input_data["SD_MAX_DIAS_MORA_SSFF_06M"] = dias_mora
+    input_data["MAX_PORC_DEUDA_SOBREGIRO_CUENTA_CORRIENTE_ENTFIN_12M"] = pct_sobregiro
+    input_data["MAX_CNT_ENTIDADES_SSFF_06M"] = num_entidades
+    input_data["NumeroTrabajadores"] = trabajadores
+    input_data["ANTIGUEDAD_RCC_01M"] = antiguedad
 
     # Predecir
     prob = modelo.predict_proba(input_data)[0][1]
