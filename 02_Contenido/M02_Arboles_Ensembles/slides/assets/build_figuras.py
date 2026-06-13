@@ -124,7 +124,59 @@ def f_arena():
     fig.suptitle("Arena de combate: en este dataset, Random Forest gana en AUC y tiempo", x=0.01, ha="left", fontsize=13.5, weight="bold", color=AZUL)
     guardar(fig,"fig_arena.svg")
 
+# 7) Gini vs Entropy
+def f_gini_entropy():
+    p=np.linspace(0.001,0.999,200)
+    gini=2*p*(1-p); ent=-(p*np.log2(p)+(1-p)*np.log2(1-p))
+    fig,ax=plt.subplots(figsize=(8.4,4.6))
+    ax.plot(p,gini,color=AZUL2,lw=3,label="Gini = 2·p·(1−p)")
+    ax.plot(p,ent,color=GRANATE,lw=3,label="Entropía")
+    ax.axvline(0.5,ls="--",color=GRIS,lw=1.5)
+    ax.annotate("impureza máxima\n(mezcla 50/50)",xy=(0.5,1.0),xytext=(0.58,0.62),fontsize=10.5,color=GRIS)
+    ax.set_title("Criterios de división: el árbol busca tramos lo más 'puros' posible",loc="left")
+    ax.set_xlabel("Proporción de la clase positiva (p)"); ax.set_ylabel("Impureza"); ax.legend(loc="upper right")
+    guardar(fig,"fig_gini_entropy.svg")
+
+# 8) Reducción de varianza en Random Forest
+def f_rf_variance():
+    from sklearn.tree import DecisionTreeRegressor
+    from sklearn.ensemble import RandomForestRegressor
+    rng=np.random.default_rng(RS)
+    X=np.sort(rng.uniform(0,10,120)).reshape(-1,1); ruido=rng.normal(0,0.35,120)
+    y=np.sin(X).ravel()+ruido; xs=np.linspace(0,10,300).reshape(-1,1)
+    fig,ax=plt.subplots(figsize=(8.8,4.6))
+    for i in range(10):
+        idx=rng.integers(0,len(X),len(X))
+        t=DecisionTreeRegressor(max_depth=6,random_state=i).fit(X[idx],y[idx])
+        ax.plot(xs,t.predict(xs),color=CELESTE,lw=0.8,alpha=0.45)
+    rf=RandomForestRegressor(n_estimators=300,random_state=RS).fit(X,y)
+    ax.plot(xs,np.sin(xs).ravel(),color=GRIS,lw=2.2,ls="--",label="Función real")
+    ax.plot(xs,rf.predict(xs),color=GRANATE,lw=3,label="Random Forest (promedio)")
+    ax.plot([],[],color=CELESTE,lw=1.2,label="Árboles individuales (ruidosos)")
+    ax.set_title("Random Forest reduce la varianza: promediar suaviza el ruido de cada árbol",loc="left")
+    ax.set_xticks([]); ax.set_yticks([]); ax.legend(loc="upper right")
+    guardar(fig,"fig_rf_variance.svg")
+
+# 9) Early stopping en boosting
+def f_early_stopping():
+    rng=np.random.default_rng(0); it=np.arange(1,301)
+    train=0.7*np.exp(-it/55)+0.04
+    val=0.7*np.exp(-it/55)+0.06+0.0007*np.clip(it-90,0,None)+rng.normal(0,0.004,len(it))
+    best=int(np.argmin(val))
+    fig,ax=plt.subplots(figsize=(8.8,4.6))
+    ax.plot(it,train,color=AZUL2,lw=2.4,label="Train loss")
+    ax.plot(it,val,color=GRANATE,lw=2.4,label="Validation loss")
+    ax.axvline(it[best],ls="--",color=OK,lw=2); ax.scatter([it[best]],[val[best]],s=85,color=OK,zorder=5,edgecolor="white")
+    ax.annotate(f"Early stopping\n(iteración {it[best]})",xy=(it[best],val[best]),xytext=(it[best]+35,val[best]+0.09),
+                color=OK,fontsize=11,arrowprops=dict(arrowstyle="->",color=OK))
+    ax.axvspan(it[best],300,color=MALO,alpha=.05)
+    ax.text(245,val.max()*0.92,"sobreajuste",color=MALO,fontsize=11,weight="bold",ha="center")
+    ax.set_title("Early stopping: frenar cuando la validación deja de mejorar",loc="left")
+    ax.set_xlabel("Iteraciones (nº de árboles)"); ax.set_ylabel("Loss"); ax.legend(loc="upper right")
+    guardar(fig,"fig_early_stopping.svg")
+
 if __name__=="__main__":
     print("Figuras S02 en",AQUI)
     f_moons_lineal(); f_fronteras(); f_arbol_overfit(); f_svm_margen(); f_knn(); f_arena()
+    f_gini_entropy(); f_rf_variance(); f_early_stopping()
     print("Listo.")

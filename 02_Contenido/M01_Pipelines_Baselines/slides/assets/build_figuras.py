@@ -45,6 +45,11 @@ def guardar(fig, nombre):
     plt.close(fig)
     print(" +", nombre)
 
+def estilo_titulo(ax, titulo, sub=None):
+    ax.set_title(titulo, loc="left", pad=(22 if sub else 10))
+    if sub: ax.text(0, 1.015, sub, transform=ax.transAxes, fontsize=9, color=GRIS, va="bottom")
+    return ax
+
 # ---------------------------------------------------------------- 1. Dispersión + recta OLS
 def f_dispersion_recta():
     x = np.random.uniform(40, 220, 60)
@@ -207,8 +212,85 @@ def f_correlacion():
     fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
     guardar(fig, "fig_correlacion.svg")
 
+# ---------------------------------------------------------------- 11. Interpretación de coeficientes
+def f_coef_interpret():
+    feats=["antigüedad (por año)","metros² (por m²)","habitación (c/u)"]
+    coefs=[-1200,1250,8500]
+    fig,ax=plt.subplots(figsize=(8.6,4.0))
+    ax.barh(feats,coefs,color=[OK if c>0 else MALO for c in coefs])
+    ax.axvline(0,color="#333",lw=1)
+    for f,c in zip(feats,coefs):
+        ax.text(c+(180 if c>0 else -180),f,f"{c:+,} US$",va="center",ha="left" if c>0 else "right",fontsize=11.5,weight="bold",
+                color=OK if c>0 else MALO)
+    ax.set_xlim(-3000,11000)
+    estilo_titulo(ax,"Interpretación de coeficientes: cuánto suma o resta cada variable al precio","verde = sube el precio · rojo = lo baja")
+    ax.set_xlabel("Efecto sobre el precio (US$)")
+    guardar(fig,"fig_coef_interpret.svg")
+
+# ---------------------------------------------------------------- 12. Odds Ratio forest (credit scoring)
+def f_odds_forest():
+    variables=["Edad","Tiene hipoteca","Meses último atraso","Deuda / Ingreso"]
+    OR=[0.98,0.67,1.08,4.48]
+    fig,ax=plt.subplots(figsize=(8.8,4.2))
+    cols=[OK if o<1 else MALO for o in OR]
+    ax.hlines(variables,[1]*4,OR,color=cols,lw=3,zorder=2)
+    ax.scatter(OR,variables,color=cols,s=110,zorder=3,edgecolor="white")
+    ax.axvline(1,color=GRIS,ls="--",lw=1.6)
+    for v,o in zip(variables,OR):
+        ax.text(o*(1.08 if o>=1 else 0.92),v,f"OR={o}",va="center",ha="left" if o>=1 else "right",fontsize=11,weight="bold",color=OK if o<1 else MALO)
+    ax.set_xscale("log"); ax.set_xlim(0.5,7)
+    ax.text(0.62,3.4,"◄ Protege",color=OK,fontsize=11,weight="bold")
+    ax.text(3.2,0.4,"Aumenta el riesgo ►",color=MALO,fontsize=11,weight="bold",ha="right")
+    estilo_titulo(ax,"Odds Ratio por variable (credit scoring)","OR>1 aumenta la probabilidad de default · OR<1 la reduce")
+    ax.set_xlabel("Odds Ratio (escala logarítmica)")
+    guardar(fig,"fig_odds_forest.svg")
+
+# ---------------------------------------------------------------- 13. MAE vs RMSE y outliers
+def f_mae_rmse():
+    rng=np.random.default_rng(0); err=np.abs(rng.normal(0,5,40))
+    out=np.append(err,60.)
+    mae1,rmse1=err.mean(),np.sqrt((err**2).mean())
+    mae2,rmse2=out.mean(),np.sqrt((out**2).mean())
+    fig,ax=plt.subplots(figsize=(8.4,4.4))
+    ax.bar([-.19,.81],[mae1,mae2],width=.38,color=AZUL2,label="MAE")
+    ax.bar([.19,1.19],[rmse1,rmse2],width=.38,color=GRANATE,label="RMSE")
+    for x,v in [(-.19,mae1),(.81,mae2),(.19,rmse1),(1.19,rmse2)]:
+        ax.text(x,v+0.3,f"{v:.1f}",ha="center",fontsize=10.5,weight="bold")
+    ax.set_xticks([0,1]); ax.set_xticklabels(["Sin outlier","Con 1 outlier (60)"])
+    estilo_titulo(ax,"RMSE castiga los outliers mucho más que MAE","un solo error grande dispara el RMSE")
+    ax.set_ylabel("Error"); ax.legend(loc="upper left")
+    guardar(fig,"fig_mae_rmse.svg")
+
+# ---------------------------------------------------------------- 14. Regularización Ridge/Lasso
+def f_regularizacion():
+    feats=[f"x{i}" for i in range(1,9)]
+    orig=np.array([2.1,-1.8,0.9,1.5,-0.4,0.25,-1.1,0.7])
+    ridge=orig*0.5
+    lasso=orig.copy(); lasso[np.abs(orig)<0.6]=0.; lasso*=0.78
+    fig,axes=plt.subplots(1,3,figsize=(12.4,3.8),sharey=True)
+    for ax,(t,c,col) in zip(axes,[("Sin regularizar",orig,AZUL),("Ridge (L2): encoge todo",ridge,AZUL2),("Lasso (L1): lleva a cero",lasso,GRANATE)]):
+        ax.bar(feats,c,color=col); ax.axhline(0,color="#333",lw=.8); ax.set_title(t,loc="left",fontsize=12.5)
+    axes[2].annotate("= 0\n(descartadas)",xy=(4,0),xytext=(4.4,1.1),color=GRANATE,fontsize=10,ha="center",arrowprops=dict(arrowstyle="->",color=GRANATE))
+    fig.suptitle("Regularización: Ridge encoge los coeficientes; Lasso lleva algunos a CERO (selección automática)",x=0.01,ha="left",fontsize=13,weight="bold",color=AZUL)
+    guardar(fig,"fig_regularizacion.svg")
+
+# ---------------------------------------------------------------- 15. Data leakage: caída en producción
+def f_leakage_drop():
+    fig,ax=plt.subplots(figsize=(8.2,4.4))
+    etapas=["Train\n(con fuga)","Test\n(con fuga)","Producción\n(datos reales)"]
+    acc=[99,98,62]; cols=[AZUL2,AZUL2,MALO]
+    b=ax.bar(etapas,acc,color=cols)
+    for r,v in zip(b,acc): ax.text(r.get_x()+r.get_width()/2,v+1.5,f"{v}%",ha="center",fontsize=12,weight="bold")
+    ax.set_ylim(0,108)
+    ax.annotate("¡el modelo colapsa\nen el mundo real!",xy=(2,62),xytext=(0.9,38),color=MALO,fontsize=11,weight="bold",
+                arrowprops=dict(arrowstyle="->",color=MALO,lw=1.6))
+    estilo_titulo(ax,"Data leakage: accuracy 'perfecto' en test, desastre en producción")
+    ax.set_ylabel("Accuracy (%)")
+    guardar(fig,"fig_leakage_drop.svg")
+
 if __name__ == "__main__":
     print("Generando figuras de S01 en", AQUI)
     f_dispersion_recta(); f_ols_errores(); f_gradiente(); f_sigmoide(); f_logodds()
     f_bias_variance(); f_cv_folds(); f_roc_pr(); f_eda(); f_correlacion()
+    f_coef_interpret(); f_odds_forest(); f_mae_rmse(); f_regularizacion(); f_leakage_drop()
     print("Listo.")

@@ -117,9 +117,37 @@ def f_serializacion():
     fig.suptitle("Comparativa de formatos: Joblib comprime sin perder velocidad", x=0.01, ha="left", fontsize=13.5, weight="bold", color=AZUL)
     guardar(fig,"fig_serializacion.svg")
 
+# ---- CV scores por fold ----
+def f_cv_scores():
+    folds=["Fold 1","Fold 2","Fold 3","Fold 4","Fold 5"]; auc=[0.9821,0.9788,0.9810,0.9795,0.9806]
+    m=np.mean(auc); s=np.std(auc)
+    fig,ax=plt.subplots(figsize=(8.6,4.4))
+    b=ax.bar(folds,auc,color=AZUL2,width=0.62)
+    ax.axhline(m,color=GRANATE,lw=2.4,label=f"Media = {m:.4f}")
+    ax.axhspan(m-s,m+s,color=GRANATE,alpha=.10,label=f"±1 desv. = {s:.4f}")
+    for r,a in zip(b,auc): ax.text(r.get_x()+r.get_width()/2,a+0.0006,f"{a:.3f}",ha="center",fontsize=10,weight="bold")
+    ax.set_ylim(0.965,0.99)
+    ax.set_title("Validación cruzada: la métrica viene con su VARIANZA entre folds",loc="left")
+    ax.set_ylabel("AUC-ROC"); ax.legend(loc="lower right")
+    guardar(fig,"fig_cv_scores.svg")
+
+# ---- Data drift ----
+def f_drift():
+    rng=np.random.default_rng(RS)
+    dev=rng.beta(2,5,4000); prod=rng.beta(2.7,4,4000)
+    fig,ax=plt.subplots(figsize=(8.8,4.4))
+    ax.hist(dev,bins=34,density=True,alpha=.6,color=AZUL2,label="Desarrollo")
+    ax.hist(prod,bins=34,density=True,alpha=.6,color=NARANJA,label="Producción (3 meses después)")
+    ax.axvline(dev.mean(),color=AZUL2,ls="--",lw=1.5); ax.axvline(prod.mean(),color=NARANJA,ls="--",lw=1.5)
+    ax.annotate("la población\nse desplazó",xy=(prod.mean(),0.5),xytext=(0.55,1.6),fontsize=10.5,color=NARANJA,
+                arrowprops=dict(arrowstyle="->",color=NARANJA))
+    ax.set_title("Data drift: el score se desplaza con el tiempo → monitorear y re-evaluar",loc="left")
+    ax.set_xlabel("Score del modelo"); ax.set_yticks([]); ax.legend(loc="upper right")
+    guardar(fig,"fig_drift.svg")
+
 if __name__=="__main__":
     print("Figuras S04 en",AQUI)
     X,sv=_modelo_shap()
     f_shap_bar(sv); f_shap_beeswarm(sv); f_shap_waterfall(sv); f_shap_scatter(X,sv)
-    f_cv_variants(); f_serializacion()
+    f_cv_variants(); f_serializacion(); f_cv_scores(); f_drift()
     print("Listo.")
