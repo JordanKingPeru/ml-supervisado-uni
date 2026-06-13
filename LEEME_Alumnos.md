@@ -39,3 +39,6 @@
 - 🎁 **Cierre del curso:** `02_Contenido/M07_Caso_Integrador_ML/` es un caso end-to-end completo
   resuelto como **documento regulatorio** de riesgo de crédito (dataset real de UCI). Mira el resultado
   final en `salidas/` (HTML y PDF) y úsalo como modelo para tu proyecto final.
+- 📚 **Referencia:** `02_Contenido/M08_Catalogo_Algoritmos/` es un catálogo de ~30 algoritmos (de la
+  regresión a los *foundation models* y los pre-entrenados de Google), 1 lámina por algoritmo con sus
+  pros/contras, cuándo usar y librería. Tenlo a mano para elegir modelo.

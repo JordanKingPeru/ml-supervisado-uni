@@ -1,0 +1,39 @@
+<svg viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .q { fill:#f4f7fb; stroke:#3498db; stroke-width:2.5; }
+    .a { fill:#eaf6ef; stroke:#2e8b57; stroke-width:2.5; }
+    .o { fill:#fff4e6; stroke:#e07b39; stroke-width:2.5; }
+    .t { font:bold 15px 'Segoe UI',sans-serif; fill:#2c3e50; text-anchor:middle; }
+    .ta{ font:bold 15px 'Segoe UI',sans-serif; fill:#2e8b57; text-anchor:middle; }
+    .to{ font:bold 15px 'Segoe UI',sans-serif; fill:#b5651d; text-anchor:middle; }
+    .e { stroke:#8B1538; stroke-width:2.3; fill:none; }
+    .el{ font:bold 12px 'Segoe UI',sans-serif; fill:#8B1538; }
+  </style>
+  <rect class="q" x="170" y="12" width="180" height="46" rx="10"/>
+  <text class="t" x="260" y="40">¿Tipo de dato?</text>
+  <path class="e" d="M260 58 V82 H110 V104"/><text class="el" x="120" y="78">Tabular</text>
+  <path class="e" d="M260 58 V82 H410 V104"/><text class="el" x="370" y="78">Texto</text>
+
+  <!-- rama tabular -->
+  <rect class="q" x="20" y="104" width="180" height="46" rx="10"/>
+  <text class="t" x="110" y="132">¿Explicar?</text>
+  <path class="e" d="M110 150 V172 H60 V194"/><text class="el" x="66" y="168">Sí</text>
+  <path class="e" d="M110 150 V172 H160 V194"/><text class="el" x="150" y="168">No</text>
+  <rect class="a" x="8" y="194" width="104" height="46" rx="10"/><text class="ta" x="60" y="216">Logística</text><text class="ta" x="60" y="232" style="font-size:12px">/ Árbol</text>
+  <rect class="a" x="120" y="194" width="120" height="46" rx="10"/><text class="ta" x="180" y="216">Boosting</text><text class="ta" x="180" y="232" style="font-size:12px">+ SHAP</text>
+
+  <rect class="o" x="35" y="262" width="220" height="44" rx="10"/>
+  <text class="to" x="145" y="289">Datos chicos → TabPFN</text>
+  <rect class="o" x="35" y="316" width="220" height="44" rx="10"/>
+  <text class="to" x="145" y="343">Sin tiempo → AutoML</text>
+
+  <!-- rama texto -->
+  <rect class="q" x="320" y="104" width="180" height="46" rx="10"/>
+  <text class="t" x="410" y="132">¿Tienes dataset?</text>
+  <path class="e" d="M410 150 V172 H360 V194"/><text class="el" x="366" y="168">Sí</text>
+  <path class="e" d="M410 150 V172 H460 V194"/><text class="el" x="450" y="168">No</text>
+  <rect class="a" x="305" y="194" width="110" height="50" rx="10"/><text class="ta" x="360" y="216">Embeddings</text><text class="ta" x="360" y="234" style="font-size:12px">+ clasificador</text>
+  <rect class="a" x="423" y="194" width="90" height="50" rx="10"/><text class="ta" x="468" y="216">LLM</text><text class="ta" x="468" y="234" style="font-size:12px">zero-shot</text>
+
+  <text x="260" y="410" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#7f8c8d">Siempre: empieza por un baseline (Dummy + Logística)</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg viewBox="0 0 940 440" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .t  { font:bold 17px 'Segoe UI',sans-serif; text-anchor:middle; }
+    .s  { font:13px 'Segoe UI',sans-serif; fill:#5b6b78; text-anchor:middle; }
+    .rl { font:bold 14px 'Segoe UI',sans-serif; text-anchor:end; }
+  </style>
+  <!-- Fila 1: clásicos (azul) -->
+  <text class="rl" x="118" y="56" fill="#2c5f8a">Clásicos</text>
+  <g>
+    <rect x="130" y="22" width="190" height="56" rx="10" fill="#eef4fb" stroke="#3498db" stroke-width="2.5"/>
+    <text class="t" x="225" y="46" fill="#2c3e50">Lineales / GLM</text><text class="s" x="225" y="66">OLS · Logística · Ridge/Lasso</text>
+  </g>
+  <g>
+    <rect x="330" y="22" width="135" height="56" rx="10" fill="#eef4fb" stroke="#3498db" stroke-width="2.5"/>
+    <text class="t" x="397" y="46" fill="#2c3e50">Vecindad</text><text class="s" x="397" y="66">KNN</text>
+  </g>
+  <g>
+    <rect x="475" y="22" width="190" height="56" rx="10" fill="#eef4fb" stroke="#3498db" stroke-width="2.5"/>
+    <text class="t" x="570" y="46" fill="#2c3e50">Probabilísticos</text><text class="s" x="570" y="66">Naive Bayes · LDA/QDA</text>
+  </g>
+  <g>
+    <rect x="675" y="22" width="135" height="56" rx="10" fill="#eef4fb" stroke="#3498db" stroke-width="2.5"/>
+    <text class="t" x="742" y="46" fill="#2c3e50">Kernel</text><text class="s" x="742" y="66">SVM</text>
+  </g>
+  <!-- Fila 2: árboles/ensembles (granate) -->
+  <text class="rl" x="118" y="150" fill="#8B1538">Tabular ★</text>
+  <g>
+    <rect x="130" y="116" width="135" height="56" rx="10" fill="#fbeef2" stroke="#8B1538" stroke-width="2.5"/>
+    <text class="t" x="197" y="140" fill="#8B1538">Árbol</text><text class="s" x="197" y="160">CART</text>
+  </g>
+  <g>
+    <rect x="275" y="116" width="170" height="56" rx="10" fill="#fbeef2" stroke="#8B1538" stroke-width="2.5"/>
+    <text class="t" x="360" y="140" fill="#8B1538">Bagging</text><text class="s" x="360" y="160">Random Forest · Extra Trees</text>
+  </g>
+  <g>
+    <rect x="455" y="116" width="230" height="56" rx="10" fill="#fbeef2" stroke="#8B1538" stroke-width="3"/>
+    <text class="t" x="570" y="140" fill="#8B1538">Boosting</text><text class="s" x="570" y="160">XGBoost · LightGBM · CatBoost</text>
+  </g>
+  <g>
+    <rect x="695" y="116" width="135" height="56" rx="10" fill="#fbeef2" stroke="#8B1538" stroke-width="2.5"/>
+    <text class="t" x="762" y="140" fill="#8B1538">Meta</text><text class="s" x="762" y="160">Voting · Stacking</text>
+  </g>
+  <!-- Fila 3: deep / vanguardia (verde) -->
+  <text class="rl" x="118" y="244" fill="#2e8b57">Vanguardia</text>
+  <g>
+    <rect x="130" y="210" width="135" height="56" rx="10" fill="#eaf6ef" stroke="#2e8b57" stroke-width="2.5"/>
+    <text class="t" x="197" y="234" fill="#2e8b57">Redes</text><text class="s" x="197" y="254">MLP</text>
+  </g>
+  <g>
+    <rect x="275" y="210" width="160" height="56" rx="10" fill="#eaf6ef" stroke="#2e8b57" stroke-width="2.5"/>
+    <text class="t" x="355" y="234" fill="#2e8b57">Deep tabular</text><text class="s" x="355" y="254">TabNet</text>
+  </g>
+  <g>
+    <rect x="445" y="210" width="190" height="56" rx="10" fill="#eaf6ef" stroke="#2e8b57" stroke-width="2.5"/>
+    <text class="t" x="540" y="234" fill="#2e8b57">Transformers tab.</text><text class="s" x="540" y="254">FT-Transformer · SAINT</text>
+  </g>
+  <g>
+    <rect x="645" y="210" width="185" height="56" rx="10" fill="#eaf6ef" stroke="#2e8b57" stroke-width="3"/>
+    <text class="t" x="737" y="234" fill="#2e8b57">Foundation</text><text class="s" x="737" y="254">TabPFN</text>
+  </g>
+  <!-- Fila 4: cloud / pre-entrenados (naranja) -->
+  <text class="rl" x="118" y="338" fill="#b5651d">Pre-entren.</text>
+  <g>
+    <rect x="130" y="304" width="150" height="56" rx="10" fill="#fff4e6" stroke="#e07b39" stroke-width="2.5"/>
+    <text class="t" x="205" y="328" fill="#b5651d">AutoML</text><text class="s" x="205" y="348">AutoGluon · FLAML</text>
+  </g>
+  <g>
+    <rect x="290" y="304" width="175" height="56" rx="10" fill="#fff4e6" stroke="#e07b39" stroke-width="2.5"/>
+    <text class="t" x="377" y="328" fill="#b5651d">Google</text><text class="s" x="377" y="348">TF-DF · Vertex AI</text>
+  </g>
+  <g>
+    <rect x="475" y="304" width="355" height="56" rx="10" fill="#fff4e6" stroke="#e07b39" stroke-width="3"/>
+    <text class="t" x="652" y="328" fill="#b5651d">LLM / Embeddings pre-entrenados</text><text class="s" x="652" y="348">Gemini zero-shot · Embeddings · Hugging Face</text>
+  </g>
+  <text x="470" y="410" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="15" fill="#7f8c8d">De arriba (interpretables, baseline) hacia abajo (potencia, estado del arte, sin entrenar)</text>
+</svg>
