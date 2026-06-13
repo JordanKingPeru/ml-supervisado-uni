@@ -1,2 +1,18 @@
 *.env
 *.ini
+
+# Caché de Python / Jupyter
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Entornos virtuales
+.venv/
+venv/
+
+# Archivos temporales de Office / SO
+~$*
+desktop.ini
+Thumbs.db
+.DS_Store
