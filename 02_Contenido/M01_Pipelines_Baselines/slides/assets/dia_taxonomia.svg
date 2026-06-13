@@ -1,0 +1,33 @@
+<svg viewBox="0 0 920 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .nodo { fill:#f4f7fb; stroke:#3498db; stroke-width:2.5; }
+    .raiz { fill:#fbeef2; stroke:#8B1538; stroke-width:3; }
+    .hoja { fill:#eaf6ef; stroke:#2e8b57; stroke-width:2; }
+    .tx { font:bold 19px 'Segoe UI',sans-serif; fill:#2c3e50; text-anchor:middle; }
+    .txs { font:15px 'Segoe UI',sans-serif; fill:#7f8c8d; text-anchor:middle; }
+    .ln { stroke:#8B1538; stroke-width:2.5; fill:none; }
+  </style>
+  <rect class="nodo raiz" x="330" y="8" width="260" height="58" rx="10"/>
+  <text class="tx" x="460" y="34">APRENDIZAJE SUPERVISADO</text>
+  <text class="txs" x="460" y="54">(datos etiquetados: X &#8594; y)</text>
+  <path class="ln" d="M460 66 V92 H230 V118"/>
+  <path class="ln" d="M460 66 V92 H690 V118"/>
+  <rect class="nodo" x="110" y="118" width="240" height="56" rx="10"/>
+  <text class="tx" x="230" y="142">CLASIFICACI&#211;N</text>
+  <text class="txs" x="230" y="162">predice categor&#237;as</text>
+  <rect class="nodo" x="570" y="118" width="240" height="56" rx="10"/>
+  <text class="tx" x="690" y="142">REGRESI&#211;N</text>
+  <text class="txs" x="690" y="162">predice valores</text>
+  <path class="ln" d="M230 174 V198 H150 V224"/>
+  <path class="ln" d="M230 174 V198 H310 V224"/>
+  <path class="ln" d="M690 174 V198 H610 V224"/>
+  <path class="ln" d="M690 174 V198 H770 V224"/>
+  <rect class="nodo hoja" x="70" y="224" width="160" height="54" rx="10"/>
+  <text class="tx" x="150" y="247">Binaria</text><text class="txs" x="150" y="266">S&#237; / No &#183; Fraude</text>
+  <rect class="nodo hoja" x="245" y="224" width="160" height="54" rx="10"/>
+  <text class="tx" x="325" y="247">Multiclase</text><text class="txs" x="325" y="266">A &#183; B &#183; C</text>
+  <rect class="nodo hoja" x="530" y="224" width="160" height="54" rx="10"/>
+  <text class="tx" x="610" y="247">Lineal</text><text class="txs" x="610" y="266">precios</text>
+  <rect class="nodo hoja" x="705" y="224" width="160" height="54" rx="10"/>
+  <text class="tx" x="785" y="247">No lineal</text><text class="txs" x="785" y="266">series, &#225;rboles</text>
+</svg>

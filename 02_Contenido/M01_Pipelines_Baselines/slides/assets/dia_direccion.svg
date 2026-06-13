@@ -1,0 +1,24 @@
+<svg viewBox="0 0 900 210" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .tx { font:bold 19px 'Segoe UI',sans-serif; text-anchor:middle; }
+    .txs { font:15px 'Segoe UI',sans-serif; fill:#555; text-anchor:middle; }
+    .txm { font:16px 'Segoe UI',sans-serif; text-anchor:middle; }
+    .axis { stroke:#7f8c8d; stroke-width:2; }
+  </style>
+  <line class="axis" x1="60" y1="44" x2="840" y2="44"/>
+  <polygon points="840,44 826,37 826,51" fill="#7f8c8d"/>
+  <polygon points="60,44 74,37 74,51" fill="#7f8c8d"/>
+  <text class="txs" x="450" y="26">DIRECCI&#211;N DEL EFECTO</text>
+  <rect x="80" y="74" width="220" height="100" rx="10" fill="#eaf6ef" stroke="#2e8b57" stroke-width="2.5"/>
+  <text class="tx" x="190" y="106" fill="#2e8b57">&#946; &lt; 0</text>
+  <text class="txs" x="190" y="130">OR &lt; 1 &#183; &#8595; probabilidad</text>
+  <text class="txm" x="190" y="158" fill="#2e8b57">"Factor Protector"</text>
+  <rect x="340" y="74" width="220" height="100" rx="10" fill="#f4f7fb" stroke="#7f8c8d" stroke-width="2.5"/>
+  <text class="tx" x="450" y="106" fill="#7f8c8d">&#946; = 0</text>
+  <text class="txs" x="450" y="130">OR = 1 &#183; sin efecto</text>
+  <text class="txm" x="450" y="158" fill="#7f8c8d">Irrelevante</text>
+  <rect x="600" y="74" width="220" height="100" rx="10" fill="#fbeaea" stroke="#c0392b" stroke-width="2.5"/>
+  <text class="tx" x="710" y="106" fill="#c0392b">&#946; &gt; 0</text>
+  <text class="txs" x="710" y="130">OR &gt; 1 &#183; &#8593; probabilidad</text>
+  <text class="txm" x="710" y="158" fill="#c0392b">"Factor de Riesgo"</text>
+</svg>

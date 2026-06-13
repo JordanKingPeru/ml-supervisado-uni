@@ -1,0 +1,27 @@
+<svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .q { fill:#f4f7fb; stroke:#3498db; stroke-width:2.5; }
+    .a { fill:#eaf6ef; stroke:#2e8b57; stroke-width:2.5; }
+    .tx { font:bold 18px 'Segoe UI',sans-serif; fill:#2c3e50; text-anchor:middle; }
+    .txs { font:14px 'Segoe UI',sans-serif; fill:#7f8c8d; text-anchor:middle; }
+    .e { stroke:#8B1538; stroke-width:2.5; fill:none; }
+    .el { font:bold 14px 'Segoe UI',sans-serif; fill:#8B1538; }
+  </style>
+  <rect class="q" x="315" y="10" width="270" height="54" rx="10"/>
+  <text class="tx" x="450" y="34">&#191;Muchos datos (&gt;100k)?</text>
+  <text class="txs" x="450" y="53">y relaciones complejas</text>
+  <path class="e" d="M450 64 V90 H205 V118"/><text class="el" x="295" y="84">NO</text>
+  <path class="e" d="M450 64 V90 H695 V118"/><text class="el" x="600" y="84">S&#205;</text>
+  <rect class="q" x="75" y="118" width="260" height="54" rx="10"/>
+  <text class="tx" x="205" y="142">&#191;Necesitas explicar</text><text class="txs" x="205" y="161">cada decisi&#243;n?</text>
+  <rect class="q" x="565" y="118" width="260" height="54" rx="10"/>
+  <text class="tx" x="695" y="142">&#191;Interpretabilidad</text><text class="txs" x="695" y="161">cr&#237;tica?</text>
+  <path class="e" d="M205 172 V194 H115 V222"/><text class="el" x="145" y="190">S&#205;</text>
+  <path class="e" d="M205 172 V194 H295 V222"/><text class="el" x="265" y="190">NO</text>
+  <path class="e" d="M695 172 V194 H605 V222"/><text class="el" x="635" y="190">S&#205;</text>
+  <path class="e" d="M695 172 V194 H785 V222"/><text class="el" x="755" y="190">NO</text>
+  <rect class="a" x="35" y="222" width="170" height="54" rx="10"/><text class="tx" x="120" y="245">Reg. Log&#237;stica</text><text class="txs" x="120" y="264">interpretable</text>
+  <rect class="a" x="220" y="222" width="170" height="54" rx="10"/><text class="tx" x="305" y="245">&#193;rbol / RF</text><text class="txs" x="305" y="264">no lineal simple</text>
+  <rect class="a" x="520" y="222" width="170" height="54" rx="10"/><text class="tx" x="605" y="245">LogReg + SHAP</text><text class="txs" x="605" y="264">explicable</text>
+  <rect class="a" x="705" y="222" width="170" height="54" rx="10"/><text class="tx" x="790" y="245">XGBoost/LGBM</text><text class="txs" x="790" y="264">m&#225;ximo poder</text>
+</svg>
