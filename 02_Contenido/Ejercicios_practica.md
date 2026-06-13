@@ -70,3 +70,7 @@ caso completo con `credit_scoring.csv` **o** un dataset propio de tu trabajo:
 
 > Criterio de oro: otra persona debe poder ejecutar tu notebook de arriba a abajo sin editar nada
 > (`Kernel → Restart & Run All`).
+
+> 📐 **Modelo de referencia:** el módulo `M07_Caso_Integrador_ML/` es un ejemplo completo y "pro" de
+> este proyecto final, resuelto como **documento regulatorio** de riesgo de crédito con un dataset real
+> (UCI). Úsalo como plantilla de estructura, narrativa y nivel de exigencia.

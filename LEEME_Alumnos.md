@@ -36,3 +36,6 @@
 - Tras cada sesión, haz los ejercicios de `02_Contenido/Ejercicios_practica.md` (30–60 min).
 - ¿Dudas? Revisa primero `02_Contenido/FAQ_Preguntas_Respuestas.md`.
 - Los libros recomendados están en `Referencias_libros.md` (con enlaces oficiales).
+- 🎁 **Cierre del curso:** `02_Contenido/M07_Caso_Integrador_ML/` es un caso end-to-end completo
+  resuelto como **documento regulatorio** de riesgo de crédito (dataset real de UCI). Mira el resultado
+  final en `salidas/` (HTML y PDF) y úsalo como modelo para tu proyecto final.

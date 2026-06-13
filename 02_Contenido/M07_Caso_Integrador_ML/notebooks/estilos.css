@@ -1,0 +1,74 @@
+/* ============================================================
+   Estilos del documento regulatorio M07 (HTML exportado)
+   Paleta corporativa única, alineada con el tema de los gráficos.
+   ============================================================ */
+:root{
+  --azul-oscuro:#1f4e79; --azul:#2e6da4; --azul-claro:#5b9bd5;
+  --acento:#e07b39; --ok:#2e8b57; --malo:#c0392b; --gris:#7f8c8d;
+  --texto:#222; --fondo:#ffffff; --suave:#f4f7fb;
+}
+
+/* Tipografía general del documento */
+body, .jp-Notebook, #notebook-container{
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--texto); line-height: 1.55; background: var(--fondo);
+}
+#notebook-container, .jp-Notebook{
+  max-width: 980px; margin: 0 auto; padding: 0 26px 60px;
+  box-shadow: 0 0 18px rgba(0,0,0,.06);
+}
+
+/* Encabezados */
+.rendered_html h1, .jp-RenderedHTMLCommon h1{
+  color: var(--azul-oscuro); border-bottom: 3px solid var(--acento);
+  padding-bottom: 6px; margin-top: 1.6em; font-weight: 700;
+}
+.rendered_html h2, .jp-RenderedHTMLCommon h2{
+  color: var(--azul); margin-top: 1.5em; font-weight: 700;
+  border-left: 5px solid var(--azul-claro); padding-left: 12px;
+}
+.rendered_html h3, .jp-RenderedHTMLCommon h3{ color: var(--azul-oscuro); margin-top: 1.2em; }
+
+/* Tablas */
+.rendered_html table, .jp-RenderedHTMLCommon table{
+  border-collapse: collapse; margin: 14px 0; font-size: .93em; width: auto;
+}
+.rendered_html thead th, .jp-RenderedHTMLCommon thead th{
+  background: var(--azul-oscuro); color: #fff; text-align: left; padding: 8px 12px;
+}
+.rendered_html tbody td, .jp-RenderedHTMLCommon tbody td{
+  border-bottom: 1px solid #e3e9f0; padding: 7px 12px;
+}
+.rendered_html tbody tr:nth-child(even){ background: var(--suave); }
+
+/* Citas / avisos */
+.rendered_html blockquote, .jp-RenderedHTMLCommon blockquote{
+  border-left: 4px solid var(--acento); background: #fbf3ec;
+  padding: 10px 16px; color: #5b3d22; margin: 14px 0;
+}
+
+/* ---------- Carátula regulatoria ---------- */
+.caratula{
+  background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul) 70%, var(--azul-claro) 100%);
+  color: #fff; border-radius: 10px; margin: 8px 0 26px; overflow: hidden;
+  box-shadow: 0 6px 22px rgba(31,78,121,.35);
+}
+.banner-confidencial{
+  background: var(--malo); color: #fff; font-weight: 700; letter-spacing: .12em;
+  text-align: center; padding: 9px 0; font-size: .82em; text-transform: uppercase;
+}
+.caratula-cuerpo{ padding: 40px 44px 46px; }
+.caratula .entidad{ opacity:.9; font-size:.95em; margin:0 0 18px; letter-spacing:.04em; }
+.caratula h1{ color:#fff !important; border:0 !important; font-size:2.1em; margin:.1em 0 .3em; line-height:1.15; }
+.caratula h2{ color:#eaf2fb !important; border:0 !important; padding:0 !important;
+  font-weight:500; font-size:1.12em; margin:.2em 0; }
+.caratula .subtitulo{ margin-top:22px; font-size:.98em; opacity:.92; border-top:1px solid rgba(255,255,255,.3); padding-top:14px; }
+
+/* Código: discreto, para no competir con el texto del informe */
+.jp-CodeCell .jp-InputArea, div.input_area{
+  border-left: 3px solid var(--azul-claro); background:#f8fafc; border-radius:4px;
+}
+.jp-RenderedImage img, .output_png img{ display:block; margin: 6px auto; }
+
+/* Oculta los prompts In[]/Out[] para una lectura tipo informe */
+.jp-InputPrompt, .jp-OutputPrompt, .prompt{ display:none !important; }

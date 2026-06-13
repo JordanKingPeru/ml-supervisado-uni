@@ -14,7 +14,7 @@ nbformat>=5.0.0
 dtreeviz>=2.2.2
 
 # Machine Learning Core
-scikit-learn>=1.2.2     # Versión moderna con salida de Pandas
+scikit-learn>=1.6,<1.8     # acotado: <1.8 mantiene compat con optbinning (force_all_finite); >=1.6 para el resto del stack
 # category_encoders ya no se usa: migramos al TargetEncoder nativo de sklearn (sin bug con output pandas)
 imbalanced-learn>=0.10.0
 
@@ -35,3 +35,6 @@ streamlit>=1.22.0       # Demos web
 
 # Datos externos (modulo bonus M06)
 ucimlrepo>=0.0.7
+
+# Scorecards regulatorios (modulo M07: WoE/IV, binning optimo)
+optbinning>=0.19.0
