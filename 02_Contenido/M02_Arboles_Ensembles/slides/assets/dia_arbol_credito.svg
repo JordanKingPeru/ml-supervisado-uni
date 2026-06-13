@@ -1,0 +1,27 @@
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .q { fill:#f4f7fb; stroke:#3498db; stroke-width:2.5; }
+    .ok { fill:#eaf6ef; stroke:#2e8b57; stroke-width:2.5; }
+    .no { fill:#fbeaea; stroke:#c0392b; stroke-width:2.5; }
+    .tx { font:bold 18px 'Segoe UI',sans-serif; fill:#2c3e50; text-anchor:middle; }
+    .txo { font:bold 18px 'Segoe UI',sans-serif; fill:#2e8b57; text-anchor:middle; }
+    .txn { font:bold 18px 'Segoe UI',sans-serif; fill:#c0392b; text-anchor:middle; }
+    .e { stroke:#8B1538; stroke-width:2.5; fill:none; }
+    .el { font:bold 15px 'Segoe UI',sans-serif; fill:#8B1538; text-anchor:middle; }
+  </style>
+  <rect class="q" x="280" y="10" width="200" height="50" rx="10"/>
+  <text class="tx" x="380" y="40">&#191;Ingreso &gt; $50k?</text>
+  <path class="e" d="M380 60 V90 H180 V120"/><text class="el" x="250" y="84">S&#205;</text>
+  <path class="e" d="M380 60 V90 H580 V120"/><text class="el" x="510" y="84">NO</text>
+  <rect class="q" x="80" y="120" width="200" height="50" rx="10"/>
+  <text class="tx" x="180" y="150">&#191;Deuda &lt; 30%?</text>
+  <rect class="no" x="480" y="120" width="200" height="50" rx="10"/>
+  <text class="txn" x="580" y="150">DENEGAR</text>
+  <path class="e" d="M180 170 V200 H90 V230"/><text class="el" x="125" y="194">S&#205;</text>
+  <path class="e" d="M180 170 V200 H270 V230"/><text class="el" x="235" y="194">NO</text>
+  <rect class="ok" x="10" y="230" width="160" height="50" rx="10"/>
+  <text class="txo" x="90" y="260">APROBAR</text>
+  <rect class="no" x="190" y="230" width="160" height="50" rx="10"/>
+  <text class="txn" x="270" y="260">DENEGAR</text>
+  <text x="380" y="330" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="15" fill="#7f8c8d">Cada nodo = una pregunta &#183; cada hoja = una decisi&#243;n (regla If-Then)</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill:#f4f7fb; stroke:#3498db; stroke-width:2.5; }
+    .sum { fill:#eaf6ef; stroke:#2e8b57; stroke-width:3; }
+    .tx { font:bold 17px 'Segoe UI',sans-serif; fill:#2c3e50; text-anchor:middle; }
+    .txs { font:13px 'Segoe UI',sans-serif; fill:#7f8c8d; text-anchor:middle; }
+    .e { stroke:#8B1538; stroke-width:2.6; fill:none; }
+    .el { font:bold 13px 'Segoe UI',sans-serif; fill:#8B1538; text-anchor:middle; }
+  </style>
+  <g>
+    <rect class="box" x="20" y="70" width="150" height="74" rx="10"/>
+    <text x="95" y="104" text-anchor="middle" font-size="30">&#127794;</text>
+    <text class="tx" x="95" y="132">&#193;rbol 1</text>
+  </g>
+  <path class="e" d="M170 107 H230"/><text class="el" x="200" y="96">corrige</text><text class="txs" x="200" y="124">residuos</text>
+  <g>
+    <rect class="box" x="230" y="70" width="150" height="74" rx="10"/>
+    <text x="305" y="104" text-anchor="middle" font-size="30">&#127794;</text>
+    <text class="tx" x="305" y="132">&#193;rbol 2</text>
+  </g>
+  <path class="e" d="M380 107 H440"/><text class="el" x="410" y="96">corrige</text><text class="txs" x="410" y="124">residuos</text>
+  <g>
+    <rect class="box" x="440" y="70" width="150" height="74" rx="10"/>
+    <text x="515" y="104" text-anchor="middle" font-size="30">&#127794;</text>
+    <text class="tx" x="515" y="132">&#193;rbol N</text>
+  </g>
+  <path class="e" d="M590 107 H650"/>
+  <rect class="sum" x="650" y="74" width="95" height="66" rx="10"/>
+  <text class="tx" x="697" y="100" fill="#2e8b57" style="font-size:15px">Suma</text>
+  <text class="tx" x="697" y="122" fill="#2e8b57" style="font-size:15px">ponder.</text>
+  <text x="380" y="40" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="17" font-weight="bold" fill="#8B1538">Boosting: &#225;rboles en SERIE, cada uno corrige el error del anterior</text>
+  <text x="380" y="190" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="15" fill="#7f8c8d">&#375; = F&#8320; + &#951;&#183;h&#8321;(x) + &#951;&#183;h&#8322;(x) + ... + &#951;&#183;h&#8345;(x)  &#8594; reduce el SESGO</text>
+  <text x="380" y="222" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="14" fill="#7f8c8d">&#951; = learning rate (tasa de aprendizaje)</text>
+</svg>

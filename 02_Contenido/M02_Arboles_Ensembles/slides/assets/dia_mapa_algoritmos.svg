@@ -1,0 +1,26 @@
+<svg viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .raiz { fill:#fbeef2; stroke:#8B1538; stroke-width:3; }
+    .cat { fill:#f4f7fb; stroke:#3498db; stroke-width:2.5; }
+    .hoja { fill:#eaf6ef; stroke:#2e8b57; stroke-width:2; }
+    .tx { font:bold 18px 'Segoe UI',sans-serif; fill:#2c3e50; text-anchor:middle; }
+    .txs { font:14px 'Segoe UI',sans-serif; fill:#7f8c8d; text-anchor:middle; }
+    .ln { stroke:#8B1538; stroke-width:2.5; fill:none; }
+  </style>
+  <rect class="raiz" x="300" y="10" width="260" height="50" rx="10"/>
+  <text class="tx" x="430" y="40">ALGORITMOS NO LINEALES</text>
+  <path class="ln" d="M430 60 V86 H150 V112"/>
+  <path class="ln" d="M430 60 V86 H430 V112"/>
+  <path class="ln" d="M430 60 V86 H710 V112"/>
+  <rect class="cat" x="50" y="112" width="200" height="50" rx="10"/><text class="tx" x="150" y="143">&#193;RBOLES</text>
+  <rect class="cat" x="330" y="112" width="200" height="50" rx="10"/><text class="tx" x="430" y="143">ENSEMBLES</text>
+  <rect class="cat" x="610" y="112" width="200" height="50" rx="10"/><text class="tx" x="710" y="143">GEOM&#201;TRICOS</text>
+  <path class="ln" d="M150 162 V190"/>
+  <path class="ln" d="M430 162 V178 H290 V190"/>
+  <path class="ln" d="M430 162 V178 H570 V190"/>
+  <path class="ln" d="M710 162 V190"/>
+  <rect class="hoja" x="60" y="190" width="180" height="56" rx="10"/><text class="tx" x="150" y="214">CART</text><text class="txs" x="150" y="233">interpretable</text>
+  <rect class="hoja" x="200" y="190" width="180" height="56" rx="10"/><text class="tx" x="290" y="214">Bagging</text><text class="txs" x="290" y="233">Random Forest</text>
+  <rect class="hoja" x="480" y="190" width="180" height="56" rx="10"/><text class="tx" x="570" y="214">Boosting</text><text class="txs" x="570" y="233">XGBoost / LGBM</text>
+  <rect class="hoja" x="620" y="190" width="180" height="56" rx="10"/><text class="tx" x="710" y="214">SVM / KNN</text><text class="txs" x="710" y="233">por distancia</text>
+</svg>
