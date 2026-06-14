@@ -1,4 +1,4 @@
-name: ml_pro_v2
+name: ml_pro
 channels:
   - defaults
 dependencies:
