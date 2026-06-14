@@ -38,3 +38,13 @@ ucimlrepo>=0.0.7
 
 # Scorecards regulatorios (modulo M07: WoE/IV, binning optimo)
 optbinning>=0.19.0
+
+# ----------------------------------------------------------------------
+# OPCIONAL — solo para los demos de exportacion ONNX/PMML del notebook
+# M04/03_Model_Serialization. El notebook funciona SIN estos paquetes
+# (degrada con un aviso). Descomenta si quieres ejecutar esos demos.
+# Nota: sklearn2pmml ademas requiere Java instalado.
+# ----------------------------------------------------------------------
+# onnxmltools>=1.11
+# onnxruntime>=1.15
+# sklearn2pmml>=0.100

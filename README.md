@@ -28,6 +28,7 @@
 | 04 | SHAP, validación avanzada, despliegue (Streamlit/Docker) | `02_Contenido/M04_XAI_Produccion/` |
 | 🎁 | Bonus: conexión a bases de datos y repositorios públicos | `02_Contenido/M06_Conexion_Bases_Datos/` |
 | 🎁 | Bonus de cierre: caso integrador end-to-end como **documento regulatorio** de riesgo de crédito (dataset real UCI, scorecard + LightGBM, HTML/PDF) | `02_Contenido/M07_Caso_Integrador_ML/` |
+| 🎁 | Referencia transversal: **catálogo de ~30 algoritmos** (clásicos → SOTA → foundation → Google pre-entrenados) con ficha y fronteras de decisión | `02_Contenido/M08_Catalogo_Algoritmos/` |
 
 Además:
 - `02_Contenido/Ejercicios_practica.md` — ejercicios guiados por módulo + **proyecto final**.
