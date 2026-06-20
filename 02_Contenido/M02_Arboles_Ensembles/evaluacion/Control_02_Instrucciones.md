@@ -3,8 +3,7 @@
 **Curso:** Machine Learning Supervisado - PECD UNI  
 **Docente:** Jordan King Rodriguez Mallqui  
 **Sesión:** 02 - Árboles de Decisión y Ensembles  
-**Fecha de entrega:** _(definir en cada edición)_  
-**Modalidad:** Individual o en parejas
+**Modalidad:** Individual
 
 ---
 
