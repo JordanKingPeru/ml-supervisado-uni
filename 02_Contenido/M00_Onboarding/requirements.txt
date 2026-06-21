@@ -45,6 +45,6 @@ optbinning>=0.19.0
 # (degrada con un aviso). Descomenta si quieres ejecutar esos demos.
 # Nota: sklearn2pmml ademas requiere Java instalado.
 # ----------------------------------------------------------------------
-# onnxmltools>=1.11
-# onnxruntime>=1.15
+onnxmltools>=1.11
+onnxruntime>=1.15
 # sklearn2pmml>=0.100

@@ -1,0 +1,23 @@
+Collecting onnxmltools
+  Downloading onnxmltools-1.16.0-py3-none-any.whl.metadata (8.1 kB)
+Requirement already satisfied: numpy in c:\users\theki\miniconda3\envs\ml_pro\lib\site-packages (from onnxmltools) (2.2.6)
+Collecting onnx>=1.8.1 (from onnxmltools)
+  Downloading onnx-1.22.0-cp310-cp310-win_amd64.whl.metadata (8.5 kB)
+Requirement already satisfied: protobuf in c:\users\theki\miniconda3\envs\ml_pro\lib\site-packages (from onnxmltools) (6.33.6)
+Collecting skl2onnx>=1.4.9 (from onnxmltools)
+  Downloading skl2onnx-1.20.0-py3-none-any.whl.metadata (4.0 kB)
+Requirement already satisfied: typing_extensions>=4.15.0 in c:\users\theki\miniconda3\envs\ml_pro\lib\site-packages (from onnx>=1.8.1->onnxmltools) (4.15.0)
+Collecting ml_dtypes>=0.5.4 (from onnx>=1.8.1->onnxmltools)
+  Using cached ml_dtypes-0.5.4-cp310-cp310-win_amd64.whl.metadata (9.2 kB)
+Requirement already satisfied: scikit-learn>=1.1 in c:\users\theki\miniconda3\envs\ml_pro\lib\site-packages (from skl2onnx>=1.4.9->onnxmltools) (1.7.2)
+Requirement already satisfied: scipy>=1.8.0 in c:\users\theki\miniconda3\envs\ml_pro\lib\site-packages (from scikit-learn>=1.1->skl2onnx>=1.4.9->onnxmltools) (1.15.3)
+Requirement already satisfied: joblib>=1.2.0 in c:\users\theki\miniconda3\envs\ml_pro\lib\site-packages (from scikit-learn>=1.1->skl2onnx>=1.4.9->onnxmltools) (1.5.3)
+Requirement already satisfied: threadpoolctl>=3.1.0 in c:\users\theki\miniconda3\envs\ml_pro\lib\site-packages (from scikit-learn>=1.1->skl2onnx>=1.4.9->onnxmltools) (3.6.0)
+Downloading onnxmltools-1.16.0-py3-none-any.whl (303 kB)
+Downloading onnx-1.22.0-cp310-cp310-win_amd64.whl (17.2 MB)
+   ---------------------------------------- 17.2/17.2 MB 38.7 MB/s  0:00:00
+Using cached ml_dtypes-0.5.4-cp310-cp310-win_amd64.whl (210 kB)
+Downloading skl2onnx-1.20.0-py3-none-any.whl (317 kB)
+Installing collected packages: ml_dtypes, onnx, skl2onnx, onnxmltools
+
+Successfully installed ml_dtypes-0.5.4 onnx-1.22.0 onnxmltools-1.16.0 skl2onnx-1.20.0
